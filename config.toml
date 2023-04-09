@@ -1,7 +1,9 @@
 # Includes one of the default files in src/bootstrap/defaults
-profile = "user"
+profile = "codegen"
 changelog-seen = 2
 [build]
 submodules = false
 [llvm]
 download-ci-llvm = false
+[rust]
+lld=true

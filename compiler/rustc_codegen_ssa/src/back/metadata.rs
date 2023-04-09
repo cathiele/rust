@@ -180,7 +180,10 @@ pub(crate) fn create_object_file(sess: &Session) -> Option<write::Object<'static
             if features.contains("+c") {
                 e_flags |= elf::EF_RISCV_RVC;
             }
-
+            // check if embedded base extension is in use ( https://noxim.xyz/blog/rust-ch32v003/custom-rust/ )
+            if features.contains("+e") {
+                e_flags |= 0x0008; // elf::EF_RISCV_RVE;
+            }
             // Select the appropriate floating-point ABI
             if features.contains("+d") {
                 e_flags |= elf::EF_RISCV_FLOAT_ABI_DOUBLE;
